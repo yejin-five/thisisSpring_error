@@ -1,0 +1,62 @@
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/this_db
+    username: postgres
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+
+  springdoc:
+    swagger-ui:
+      # swagger-ui ?? ??. default ?? /swagger-ui.html??.
+      path: /swagger-ui.html
+
+      # ? API? ?? ?? ??
+      # path, query, body, response ??? ??
+      groups-order: DESC
+
+      # ?? ?? ??.
+      # alpha: ??? ? ??
+      # method: OpenAPI specification file? ??? ?? ?? ?? ?? ??
+      tags-sorter: alpha
+
+      # ???? ?? ??.
+      # method? delete - get - patch - post - put ??? ????.
+      # alpha? ??? ??? ??? ??? ? ??.
+      operations-sorter: method
+
+      # swagger-ui default url? petstore html? ???? ??
+      disable-swagger-default-url: true
+
+      # swagger-ui?? try ?? ? request duration? ???? ??
+      display-request-duration: true
+
+    # openAPI ?? ??. default ?? /v3/api-docs ??.
+    api-docs:
+      path: /api-docs
+
+    # Spring Actuator? endpoint?? ??? ????
+    show-actuator: true
+
+    # request media type ? ?? ?
+    default-consumes-media-type: application/json
+
+    # response media type ? ?? ?
+    default-produces-media-type: application/json
+
+    # ?? ??? ???? controller? swagger-ui? ????.
+    paths-to-match:
+      - /api/**
